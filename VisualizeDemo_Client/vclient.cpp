@@ -7,6 +7,7 @@ vClient::vClient(QWidget *parent) :
 {
     ui->setupUi(this);
     cl = new QTcpSocket();
+
     connect(cl, SIGNAL(connected()), this, SLOT(isConnect()));
     connect(cl, SIGNAL(disconnected()), this, SLOT(isDisconnect()));
     connect(cl, SIGNAL(readyRead()), this, SLOT(readMessage()));
@@ -28,6 +29,8 @@ void vClient::isConnect()
     ui->status_lb->setText("状态：已连接");
     ui->connect_btn->setText("断开连接");
     checkStatus = true;
+
+    cl->write("用户id：xxx，模型：xxx");
 }
 
 void vClient::isDisconnect()

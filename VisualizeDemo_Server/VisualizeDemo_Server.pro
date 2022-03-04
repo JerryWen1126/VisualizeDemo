@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,8 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        vserver.cpp
+        vserver.cpp \
+    tcpclientsocket.cpp \
+    tcpserver.cpp
 
-HEADERS  += vserver.h
+HEADERS  += vserver.h \
+    tcpclientsocket.h \
+    tcpserver.h
 
 FORMS    += vserver.ui

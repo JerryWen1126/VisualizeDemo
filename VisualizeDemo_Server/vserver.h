@@ -2,23 +2,32 @@
 #define VSERVER_H
 
 #include <QWidget>
+#include <QDebug>
+
+#include "tcpserver.h"
+#include "ui_vserver.h"
 
 namespace Ui {
-class vServer;
+class VServer;
 }
 
-class vServer : public QWidget
+class VServer : public QWidget             //GUI
 {
     Q_OBJECT
 
 public:
-    explicit vServer(QWidget *parent = 0);
-    ~vServer();
-
-
+    explicit VServer(QWidget *parent = 0);
+    ~VServer();
 
 private:
-    Ui::vServer *ui;
+    Ui::VServer *ui;
+
+    int port;
+    TcpServer *server;
+
+public slots:
+    void updateServer(QString, int);    // 更新VServer界面显示
+    void slot_createServer();           // 创建一个服务
 };
 
 #endif // VSERVER_H
